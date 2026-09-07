@@ -32,13 +32,29 @@
 }
 
 #let problem(nr, body) = block(width: 100%)[
+  #context [
+    #metadata(measure([*#nr.*]).width) <hw-problem-nr-width>
+  ]
+
   #place[*#nr.*]
-  #pad(left: 2em)[#body]
+
+  #block[#body] <hw-problem-body>
 ]
 
 #let hw(numbering: "(a).") = document => {
   show: frame-style(styles.hint)
   set enum(numbering: numbering)
 
-  document
+  context {
+    let widths = query(<hw-problem-nr-width>).map(it => it.value)
+    let max-width = calc.max(0pt, ..widths)
+    let indent = (max-width + 1em).to-absolute()
+
+    show <hw-problem-body>: it => pad(
+      left: indent,
+      it.body,
+    )
+
+    document
+  }
 }
