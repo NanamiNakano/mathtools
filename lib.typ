@@ -2,6 +2,7 @@
 #import "@preview/pigmentpedia:0.3.3": *
 #import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.4"
+#import "@preview/equate:0.3.3": *
 
 #let (theorem, def, claim) = frames(
   theorem: ("Theorem", pantone.c._707),
