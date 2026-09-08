@@ -4,10 +4,11 @@
 #import "@preview/cetz-plot:0.1.4"
 #import "@preview/equate:0.3.3": *
 
-#let (theorem, def, claim) = frames(
+#let (theorem, def, claim, cor) = frames(
   theorem: ("Theorem", pantone.c._707),
   def: ("Definition", pantone.c._530),
   claim: ("Claim", pantone.c._304),
+  cor: ("Corollary", pantone.c._1345)
 )
 
 #let proof(body) = [
