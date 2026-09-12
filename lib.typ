@@ -15,6 +15,10 @@
   *Proof.* #body #h(1fr) $square.filled$
 ]
 
+#let disproof(body) = [
+  *Disroof.* #body #h(1fr) $square.filled$
+]
+
 #let claim-proof(body) = [
   *Proof of Claim.* #body #h(1fr) $square$
 ]
