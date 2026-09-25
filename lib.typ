@@ -8,19 +8,19 @@
   theorem: ("Theorem", pantone.c._707),
   def: ("Definition", pantone.c._530),
   claim: ("Claim", pantone.c._304),
-  cor: ("Corollary", pantone.c._1345)
+  cor: ("Corollary", pantone.c._1345),
 )
 
 #let proof(body) = [
-  *Proof.* #body #h(1fr) $square.filled$
+  *Proof.* #body #box() #h(1fr)#sym.wj$square.filled$
 ]
 
 #let disproof(body) = [
-  *Disroof.* #body #h(1fr) $square.filled$
+  *Disroof.* #body #box() #h(1fr)#sym.wj$square.filled$
 ]
 
 #let claim-proof(body) = [
-  *Proof of Claim.* #body #h(1fr) $square$
+  *Proof of Claim.* #body #box() #h(1fr)#sym.wj$square$
 ]
 
 #let note(body) = {
