@@ -1,38 +1,68 @@
-#import "@preview/frame-it:2.0.0": *
+#import "@preview/ctheorems:2.0.0": *
+#import "@preview/frame-it:2.0.0": styles
 #import "@preview/pigmentpedia:0.3.3": *
 #import "@preview/cetz:0.5.2"
 #import "@preview/cetz-plot:0.1.4"
 #import "@preview/equate:0.3.3": *
 
-#let (theorem, def, claim, cor) = frames(
-  theorem: ("Theorem", pantone.c._707),
-  def: ("Definition", pantone.c._530),
-  claim: ("Claim", pantone.c._304),
-  cor: ("Corollary", pantone.c._1345),
+#let _theorem-fmt(thm, accent: pantone.c._707) = [
+  #metadata((thm: thm, accent: accent)) <mathtools-theorem>
+]
+
+#let thm = thm.with(fmt: _theorem-fmt)
+#let theorem = thm.with(
+  counter: "Theorem",
+  base: none,
+)
+#let definition = theorem.with(
+  supplement: "Definition",
+  body-fmt: it => it,
+  fmt: _theorem-fmt.with(accent: pantone.c._530),
+)
+#let claim = theorem.with(
+  supplement: "Claim",
+  title-fmt: emph,
+  body-fmt: it => it,
+  separator: [. ],
+  fmt: _theorem-fmt.with(accent: pantone.c._304),
+)
+#let corollary = theorem.with(
+  supplement: "Corollary",
+  fmt: _theorem-fmt.with(accent: pantone.c._1345),
 )
 
-#let proof(body) = [
-  *Proof.* #body #box() #h(1fr)#sym.wj$square.filled$
-]
+#let def = definition
+#let cor = corollary
 
-#let disproof(body) = [
-  *Disroof.* #body #box() #h(1fr)#sym.wj$square.filled$
-]
+#let _qed-symbol = context {
+  // ctheorems 2.0.0 keeps one entry per active proof in this state.
+  if state("thm-qed-done", ()).get().len() > 1 {
+    $square$
+  } else {
+    $square.filled$
+  }
+}
 
-#let claim-proof(body) = [
-  *Proof of Claim.* #body #box() #h(1fr)#sym.wj$square$
-]
+#let _note-theorem(thm, accent) = {
+  let supplement = thm.supplement
+  let number = thm.number
+  if type(supplement) == content {
+    number = [#supplement#if number != none [~#number]]
+    supplement = ""
+  }
+  block(spacing: 1.2em, (styles.boxy)(
+    thm.name,
+    (),
+    thm.body,
+    supplement,
+    number,
+    accent,
+  ))
+}
 
 #let note(body) = {
-  show ref: it => {
-    if it.element != none and inspect.is-frame(it.element) {
-      link(it.element.location(), underline(inspect.lookup-frame-info(it.element).title))
-    } else {
-      it
-    }
-  }
-
-  show: frame-style(styles.boxy)
+  show: thm-rules.with(qed-symbol: _qed-symbol)
+  show <mathtools-theorem>: it => _note-theorem(it.value.thm, it.value.accent)
 
   body
 }
@@ -48,7 +78,8 @@
 ]
 
 #let hw(numbering: "(a).") = document => {
-  show: frame-style(styles.hint)
+  show: thm-rules.with(qed-symbol: _qed-symbol)
+  show <mathtools-theorem>: it => thm-fmt-block(it.value.thm)
   set enum(numbering: numbering)
 
   context {

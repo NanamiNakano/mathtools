@@ -5,34 +5,38 @@
 
 #theorem[Sample Theorem][
   Content
-]
-#def[Sample Definition][
+] <sample-theorem>
+#definition[Sample Definition][
   Content
 ]
 #claim[Sample Claim][
   Content
-]
-#cor[Sample Corollary][
+] <sample-claim>
+#corollary[Sample Corollary][
   Content
 ]
 
-#proof[
-  #lorem(13)
-]
+See @sample-theorem, also referenced by name as @sample-theorem[!].
 
 #proof[
-  #lorem(14)
+  #lorem(30)
 ]
 
 #proof[
   #lorem(20)
+
+  #proof[of an auxiliary claim][
+    #lorem(12)
+  ]
+
+  The claim completes the proof.
 ]
 
-#claim-proof[
+#proof[of @sample-claim][
   #lorem(12)
 ]
 
-#disproof[
+#proof(supplement: "Disproof")[
   #lorem(12)
 ]
 
@@ -43,14 +47,23 @@
 #theorem[Sample Theorem][
   Content
 ]
-#def[Sample Definition][
+#definition[Sample Definition][
   Content
 ]
 #claim[Sample Claim][
   Content
 ]
-#cor[Sample Corollary][
+#corollary[Sample Corollary][
   Content
+]
+
+#proof[
+  #proof[of an auxiliary claim][
+    $ x y = y x. #qedhere $
+  ]
+
+  A proof ending in a displayed equation:
+  $ (x + y)^2 = x^2 + 2 x y + y^2. #qedhere $
 ]
 
 #problem(1)[
