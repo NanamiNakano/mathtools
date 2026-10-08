@@ -19,7 +19,7 @@
 See @sample-theorem, also referenced by name as @sample-theorem[!].
 
 #proof[
-  #lorem(30)
+  #lorem(14)
 ]
 
 #proof[
