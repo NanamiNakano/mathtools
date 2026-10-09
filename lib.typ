@@ -35,6 +35,7 @@
 #let cor = corollary
 
 #let _qed-symbol = context {
+  sym.wj
   if state("thm-qed-done", ()).get().len() > 1 {
     $square$
   } else {
@@ -60,7 +61,7 @@
 }
 
 #let note(body) = {
-  show: thm-rules.with(qed-symbol: [#box(width: 1em)#h(1fr)#sym.wj#_qed-symbol])
+  show: thm-rules.with(qed-symbol: _qed-symbol)
   show <mathtools-theorem>: it => _note-theorem(it.value.thm, it.value.accent)
 
   body
@@ -77,7 +78,7 @@
 ]
 
 #let hw(numbering: "(a).") = document => {
-  show: thm-rules.with(qed-symbol: [#box(width: 1em)#h(1fr)#sym.wj#_qed-symbol])
+  show: thm-rules.with(qed-symbol: _qed-symbol)
   show <mathtools-theorem>: it => thm-fmt-block(it.value.thm)
   set enum(numbering: numbering)
 
