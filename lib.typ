@@ -14,6 +14,10 @@
   counter: "Theorem",
   base: none,
 )
+#let lemma = theorem.with(
+  supplement: "Lemma",
+  fmt: _theorem-fmt.with(accent: pantone.c._473),
+)
 #let definition = theorem.with(
   supplement: "Definition",
   body-fmt: it => it,

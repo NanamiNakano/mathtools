@@ -6,6 +6,9 @@
 #theorem[Sample Theorem][
   Content
 ] <sample-theorem>
+#lemma[Sample Lemma][
+  Content
+]
 #definition[Sample Definition][
   Content
 ]
@@ -49,6 +52,9 @@ See @sample-theorem, also referenced by name as @sample-theorem[!].
 = Homework
 
 #theorem[Sample Theorem][
+  Content
+]
+#lemma[Sample Lemma][
   Content
 ]
 #definition[Sample Definition][
