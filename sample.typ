@@ -22,6 +22,10 @@ See @sample-theorem, also referenced by name as @sample-theorem[!].
   #lorem(14)
 ]
 
+#disproof[
+  #lorem(15)
+]
+
 #proof[
   #lorem(20)
 
@@ -36,7 +40,7 @@ See @sample-theorem, also referenced by name as @sample-theorem[!].
   #lorem(12)
 ]
 
-#proof(supplement: "Disproof")[
+#disproof[
   #lorem(12)
 ]
 

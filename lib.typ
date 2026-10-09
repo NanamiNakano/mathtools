@@ -33,6 +33,7 @@
 
 #let def = definition
 #let cor = corollary
+#let disproof = proof.with(supplement: "Disproof")
 
 #let _qed-symbol = context {
   sym.wj
